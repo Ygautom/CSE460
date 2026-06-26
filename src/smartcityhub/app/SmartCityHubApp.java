@@ -61,9 +61,9 @@ public class SmartCityHubApp {
 
         System.out.println();
 
-        // Display all events
-        System.out.println("----- All Events -----");
-        eventManager.displayAllEvents();
+        // Administrator views all events
+        System.out.println("----- Administrator Views All Events -----");
+        admin.viewAllEvents(eventManager);
 
         System.out.println();
 
@@ -79,7 +79,18 @@ public class SmartCityHubApp {
 
         System.out.println();
 
-        // Register citizens for events
+        // Find event
+        System.out.println("----- Find Event -----");
+
+        Event foundEvent = eventManager.findEventById("E1");
+
+        if (foundEvent != null) {
+            foundEvent.displayDetails();
+        }
+
+        System.out.println();
+
+        // Register citizens
         System.out.println("----- Event Registration -----");
 
         alice.registerForEvent(e1);
@@ -93,15 +104,15 @@ public class SmartCityHubApp {
 
         System.out.println();
 
-        // Remove an event
-        System.out.println("----- Removing Event E2 -----");
-        eventManager.removeEvent("E2");
+        // Administrator removes event
+        System.out.println("----- Administrator Removes Event -----");
+        admin.removeEvent(eventManager, "E2");
 
         System.out.println();
 
-        // Display updated event list
+        // Administrator views updated events
         System.out.println("----- Updated Event List -----");
-        eventManager.displayAllEvents();
+        admin.viewAllEvents(eventManager);
 
         System.out.println();
 
@@ -130,7 +141,7 @@ public class SmartCityHubApp {
 
         System.out.println();
 
-        System.out.println("Total Events Created: " + eventManager.getTotalEvents());
+        System.out.println("Total Events Remaining: " + eventManager.getTotalEvents());
 
         System.out.println("\n=== Demo Complete ===");
     }
