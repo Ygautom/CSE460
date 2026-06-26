@@ -32,8 +32,12 @@ public abstract class Event {
     public abstract void displayDetails();
 
     public void registerCitizen(Citizen citizen) {
-        participants.add(citizen);
-        System.out.println(citizen.getName() + " registered for " + title);
+        if (!participants.contains(citizen)) {
+            participants.add(citizen);
+            System.out.println(citizen.getName() + " registered for " + title);
+        } else {
+            System.out.println(citizen.getName() + " is already registered for " + title);
+        }
     }
 
     public void displayParticipants() {
