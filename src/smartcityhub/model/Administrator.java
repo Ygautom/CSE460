@@ -27,6 +27,11 @@ public class Administrator extends User {
         eventManager.displayAllEvents();
     }
 
+    // Added from your version
+    public void viewTotalEvents(EventManager eventManager) {
+        System.out.println("Total Events: " + eventManager.getTotalEvents());
+    }
+
     public void removeEvent(EventManager eventManager, String eventId) {
         System.out.println(name + " (Admin) removing event " + eventId + ".");
         eventManager.removeEvent(eventId);

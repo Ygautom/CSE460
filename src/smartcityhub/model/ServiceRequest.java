@@ -39,6 +39,11 @@ public class ServiceRequest {
                 + requestId + " (" + issueType + "): " + description);
     }
 
+    // Added from your version for compatibility
+    public void displayStatus() {
+        System.out.println("Current Status: " + status);
+    }
+
     public void updateStatus(RequestStatus newStatus) {
         this.status = newStatus;
         NotificationManager.getInstance().sendNotification(

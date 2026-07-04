@@ -83,6 +83,7 @@ public class SmartCityHubApp {
                 "Water leak near City Park fountain");
         ServiceRequest streetlight = alice.submitTypedRequest("BROKEN_STREETLIGHT", "R3",
                 "Streetlight is out on 5th Avenue");
+
         requestManager.addRequest(pothole);
         requestManager.addRequest(waterLeak);
         requestManager.addRequest(streetlight);
@@ -105,6 +106,21 @@ public class SmartCityHubApp {
         System.out.println("\n----- Residents Track Updated Progress -----");
         alice.viewMyRequests();
         bob.viewMyRequests();
+
+        // ===== Added from your version =====
+        System.out.println("\n----- Bob Unsubscribes -----");
+        notificationManager.detachObserver(bob);
+
+        ServiceRequest request4 = alice.submitTypedRequest(
+                "BROKEN_STREETLIGHT",
+                "R4",
+                "Another broken streetlight reported after Bob unsubscribed");
+
+        requestManager.addRequest(request4);
+
+        manager.assignTask(request4);
+        manager.updateRequestStatus(request4, RequestStatus.RESOLVED);
+        // ================================
 
         System.out.println("\n----- Department Manager Dashboard and Reports -----");
         manager.viewAssignedRequests(requestManager);

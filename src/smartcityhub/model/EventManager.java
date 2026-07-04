@@ -61,6 +61,10 @@ public class EventManager {
         searchByCategory(type);
     }
 
+    public void displayEventsByCategory(String category) {
+        searchByCategory(category);
+    }
+
     public void searchByCategory(String category) {
         EventCategory selected = EventCategory.fromString(category);
         List<Event> results = new ArrayList<>();
@@ -114,7 +118,7 @@ public class EventManager {
     }
 
     public List<Event> filterEvents(String category, LocalDate date, String location,
-                                    Boolean free, Integer minimumPopularity) {
+            Boolean free, Integer minimumPopularity) {
         List<Event> results = new ArrayList<>();
         EventCategory selectedCategory = null;
         if (category != null && !category.trim().isEmpty()) {
@@ -154,7 +158,7 @@ public class EventManager {
     }
 
     public void displayFilteredEvents(String category, LocalDate date, String location,
-                                      Boolean free, Integer minimumPopularity) {
+            Boolean free, Integer minimumPopularity) {
         List<Event> results = filterEvents(category, date, location, free, minimumPopularity);
         displayEvents("COMBINED FILTER RESULTS", results);
     }
